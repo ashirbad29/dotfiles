@@ -1,0 +1,5 @@
+alias cddt="cd ~/devsnest"
+alias cddf="cd ~/devsnest/probable-adventure"
+alias cddb="cd ~/devsnest/backend/devsnest"
+alias cdpw="cd /mnt/c/Users/ashir/Documents/Personal\ Wiki"
+alias glo="git log --oneline"

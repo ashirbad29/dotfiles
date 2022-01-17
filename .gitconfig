@@ -1,0 +1,15 @@
+[user]
+	email = ashirbadbehera29@gmail.com
+	name = ashirbad
+	signingKey = 2161B63E79395283
+[init]
+	defaultBranch = main
+[core]
+	editor = code -w
+
+[alias]
+	co = checkout
+	br = branch
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[commit]
+	gpgsign = false
