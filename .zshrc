@@ -48,7 +48,7 @@ eval "$(rbenv init -)"
 
 # zsh-autosugesstion
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-export FZF_DEFAULT_COMMAND='fd --type f --type d --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type f --type d --follow --exclude .git --exclude node_modules'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # My Scripts / bash functions
