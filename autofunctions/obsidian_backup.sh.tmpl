@@ -1,0 +1,26 @@
+#!/bin/zsh
+ 
+function backobs() {
+  currDir="$(pwd)"
+ 
+  # copy other dot files 
+  vaultPath="{{ .vaultPath }}";
+  cd $vaultPath
+ 
+  # check for changes
+  gs="$(git status | grep -i "modified")"
+ 
+  # If there is a new change
+  if [[ $gs == *"modified"* ]]; then
+    echo "push ✨"
+ 
+    # push to Github
+    git add -A;
+    git commit -m "New backup `date +'%d-%m-%y %H:%M:'`";
+    git push origin main;
+  else
+    echo "No changes found ❌"
+  fi
+ 
+  cd $currDir
+}
