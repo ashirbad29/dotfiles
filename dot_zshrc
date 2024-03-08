@@ -1,0 +1,78 @@
+# Created by newuser for 5.8.1
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+ 
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# some more ls aliases
+alias ll='ls -ahlF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias cd='z'
+
+alias cls='clear'
+alias fd='fdfind'
+alias szsh='source ~/.zshrc'
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -o -selection clipboard'
+
+alias cat='bat --plain'
+
+# git aliases 
+alias gits="git status"
+alias gitpl="git pull"
+
+export PATH="$PATH:$HOME/.local/bin"
+
+## Key bindings
+bindkey '^[[1;5C' forward-word     # Ctrl + Right
+bindkey '^[[1;5D' backward-word    # Ctrl + Left
+bindkey "^H" backward-delete-word  # Ctrl + Backspace
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix --exclude node_modules'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+autoload -U compinit && compinit -u
+
+eval "$(zoxide init zsh)"
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# My Scripts / bash functions
+# compile all scripts inside autofunctions directory
+for f in ~/autofunctions/*; do
+   . "$f"
+done
+
+# maven
+export M2_HOME='/home/ashirbad/.local/apache-maven-3.6.3'
+export PATH="$M2_HOME/bin:$PATH"
+# maven end
+
+# pnpm
+export PNPM_HOME="/home/ashirbad/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+eval "$(starship init zsh)"
