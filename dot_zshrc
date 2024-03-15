@@ -75,4 +75,8 @@ export PNPM_HOME="/home/ashirbad/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
+#golang
+export PATH=$PATH:/usr/local/go/bin
+#goland end
+
 eval "$(starship init zsh)"
