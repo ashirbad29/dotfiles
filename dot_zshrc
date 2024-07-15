@@ -11,15 +11,15 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
- 
+
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # some more ls aliases
 alias ll='ls -ahlF'
@@ -37,16 +37,17 @@ alias pbpaste='xclip -o -selection clipboard'
 
 alias cat='bat --plain'
 
-# git aliases 
+# git aliases
 alias gits="git status"
 alias gitpl="git pull"
+alias gitcm='if git show-ref --verify --quiet "refs/heads/main"; then git checkout main; else git checkout master; fi'
 
 export PATH="$PATH:$HOME/.local/bin"
 
 ## Key bindings
-bindkey '^[[1;5C' forward-word     # Ctrl + Right
-bindkey '^[[1;5D' backward-word    # Ctrl + Left
-bindkey "^H" backward-delete-word  # Ctrl + Backspace
+bindkey '^[[1;5C' forward-word    # Ctrl + Right
+bindkey '^[[1;5D' backward-word   # Ctrl + Left
+bindkey "^H" backward-delete-word # Ctrl + Backspace
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Setting fd as the default source for fzf
@@ -62,7 +63,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # My Scripts / bash functions
 # compile all scripts inside autofunctions directory
 for f in ~/autofunctions/*; do
-   . "$f"
+    . "$f"
 done
 
 # maven
@@ -78,5 +79,12 @@ export PATH="$PNPM_HOME:$PATH"
 #golang
 export PATH=$PATH:/usr/local/go/bin
 #goland end
+
+# bun completions
+[ -s "/home/ashirbad/.bun/_bun" ] && source "/home/ashirbad/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 eval "$(starship init zsh)"
