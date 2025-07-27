@@ -36,7 +36,7 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -o -selection clipboard'
 
 alias cat='bat --plain'
-
+alias dy="dig +short @dns.toys"
 # git aliases
 alias gits="git status"
 alias gitpl="git pull"
@@ -86,5 +86,8 @@ export PATH=$PATH:/usr/local/go/bin
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# node options
+export NODE_OPTIONS="--max-old-space-size=4096"
 
 eval "$(starship init zsh)"
