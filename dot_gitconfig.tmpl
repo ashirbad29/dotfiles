@@ -1,14 +1,18 @@
 [user]
-	email = {{ .email }}
-	name = ashirbad
+	email = ashirbad.behera@gocomet.com
+	name = Ashirbad
 
 [alias]
 	co = checkout
-	ci = commit
+	cm = commit
+	cnv = commit --no-verify
+	pnv = push --no-verify
+	fpush = push --force-with-lease --no-verify
 	st = status
 	br = branch
 	unstage = reset HEAD --
 	last = lg -1 HEAD
+	f = --no-verify
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 [core]
