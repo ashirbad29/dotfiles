@@ -1,0 +1,6 @@
+theme = Ayu
+macos-titlebar-style = "tabs"
+
+window-padding-x = 24
+font-size = 16
+keybind = shift+enter=text:\x1b\r
