@@ -16,10 +16,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias egrep='egrep --color=auto'
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
 # some more ls aliases
 alias ll='ls -ahlF'
 alias la='ls -A'
@@ -64,14 +60,16 @@ autoload -U compinit && compinit -u
 eval "$(zoxide init zsh)"
 
 # macOS
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+BREW_PREFIX="/opt/homebrew" # output of brew --prefix
+source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-# My Scripts / bash functions
+# Scripts / bash functions
 # compile all scripts inside autofunctions directory
-for f in ~/autofunctions/*; do
-    . "$f"
-done
-
+if [ -d ~/autofunctions ]; then
+    for f in ~/autofunctions/*(N); do
+        [ -f "$f" ] && source "$f"
+    done
+fi
 
 #golang
 export PATH=$PATH:/usr/local/go/bin
@@ -86,4 +84,5 @@ export NODE_OPTIONS="--max-old-space-size=4096"
 export HOMEBREW_NO_AUTO_UPDATE=1
 export EDITOR="code --wait"
 
+eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(starship init zsh)"
